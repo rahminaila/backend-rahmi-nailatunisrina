@@ -1,0 +1,42 @@
+{
+  "name": "express-starter-edii",
+  "version": "1.0.0",
+  "description": "template starter express js",
+  "main": "app.js",
+  "scripts": {
+    "start": "node .",
+    "test": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/khairul8/express-starter-edii.git"
+  },
+  "keywords": [
+    "template",
+    "starter",
+    "express",
+    "js"
+  ],
+  "author": "khairul",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/khairul8/express-starter-edii/issues"
+  },
+  "homepage": "https://gitlab.com/khairul8/express-starter-edii#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv-safe": "^8.2.0",
+    "express": "^4.18.2",
+    "http-status": "^1.6.2",
+    "jsonwebtoken": "^9.0.2",
+    "lodash": "^4.17.21",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.1.0",
+    "node-cron": "^3.0.2",
+    "nodemon": "^2.0.20",
+    "oracledb": "^6.4.0",
+    "pg": "^8.11.3",
+    "sequelize": "^6.37.1",
+    "winston": "^3.8.2"
+  }
+}

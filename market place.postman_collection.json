@@ -1,0 +1,277 @@
+{
+	"info": {
+		"_postman_id": "944b7667-4f7c-4725-909e-cd42d9cf4691",
+		"name": "market place",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24688125"
+	},
+	"item": [
+		{
+			"name": "get token",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"email\":\"adi@gmail.com\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/MarketPlace/getToken",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"MarketPlace",
+						"getToken"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cek",
+			"request": {
+				"auth": {
+					"type": "bearer"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MjEwNjI1MzksImV4cCI6MTcyMTE0ODkzOX0.CsoPqvXla3tpORgbcsnmLHcgPTmbfiNS2hSejdcJ2aU",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/MarketPlace/cek",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"MarketPlace",
+						"cek"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createProduct",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MjEwNjE1MTAsImV4cCI6MTcyMTE0NzkxMH0.r4b7ihE5uDmKPXi1Wob42jI2mxi_c77jeEMntTawA4Q",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"idMerchant\":3,\r\n    \"namaProduct\":\"ademsari\",\r\n    \"deskripsi\":\"minuman penyegar\",\r\n    \"harga\":1000,\r\n    \"stock\":8\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/MarketPlace/createProduct",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"MarketPlace",
+						"createProduct"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateProduct",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MjEwNjE1MTAsImV4cCI6MTcyMTE0NzkxMH0.r4b7ihE5uDmKPXi1Wob42jI2mxi_c77jeEMntTawA4Q",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"idProduct\":9,\r\n    \"namaProduct\":\"nutrisari jeruk\",\r\n    \"deskripsi\":\"jeruk perass\",\r\n    \"harga\":1500,\r\n    \"stock\" : 7\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/MarketPlace/updateProduct",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"MarketPlace",
+						"updateProduct"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteProduct",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MjEwNjE1MTAsImV4cCI6MTcyMTE0NzkxMH0.r4b7ihE5uDmKPXi1Wob42jI2mxi_c77jeEMntTawA4Q",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"idProduct\": 8\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/MarketPlace/deleteProduct",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"MarketPlace",
+						"deleteProduct"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getListProduct",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MjEwNjE1MTAsImV4cCI6MTcyMTE0NzkxMH0.r4b7ihE5uDmKPXi1Wob42jI2mxi_c77jeEMntTawA4Q",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/MarketPlace/getListProduct?namaProduct=mi",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"MarketPlace",
+						"getListProduct"
+					],
+					"query": [
+						{
+							"key": "namaProduct",
+							"value": "mi"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "buyProduct",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MjEwNjE1MTAsImV4cCI6MTcyMTE0NzkxMH0.r4b7ihE5uDmKPXi1Wob42jI2mxi_c77jeEMntTawA4Q",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"idCustomer\":3,\r\n    \"detil\":[\r\n        {\r\n            \"idProduct\":3,\r\n            \"jumlah\":2\r\n        },{\r\n            \"idProduct\":2,\r\n            \"jumlah\":11\r\n        }\r\n\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/MarketPlace/buyProduct",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"MarketPlace",
+						"buyProduct"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getListCustomer",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MjEwNjE1MTAsImV4cCI6MTcyMTE0NzkxMH0.r4b7ihE5uDmKPXi1Wob42jI2mxi_c77jeEMntTawA4Q",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/MarketPlace/getListCustomer?idMerchant=3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"MarketPlace",
+						"getListCustomer"
+					],
+					"query": [
+						{
+							"key": "idMerchant",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

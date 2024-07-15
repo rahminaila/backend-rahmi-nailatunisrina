@@ -1,0 +1,44 @@
+include:
+  - project: 'lnsw/pipeline-template'
+    ref: master
+    file:
+      - 'v2/backend-pipeline.yaml'
+
+image: ${NODE14_IMG}
+
+smoke test:
+  stage: test
+  cache:
+    key:
+      files:
+        - package-lock.json
+    paths:
+      - node_modules
+    untracked: true
+    policy: pull
+  tags:
+    - dc
+  script:
+    - echo "${ENV_TEST}" > .env
+    - node app.js &
+    - sleep 10
+    - curl -o - -I "localhost:3000/stats" | tac | tac | grep -q "200 OK"
+
+
+inject env dev:
+  stage: create env
+  only:
+    - development
+    - dev
+  image: ${TKGI_IMAGE}
+  script:
+    - echo "*** inject commit id (if any) ***"
+    - echo "${ENV_DEV}" > .env
+    - echo "*** configure secret for dev ***"
+    - tkgi login -a ${TKGI_CLUSTER} -u ${TKGI_USER} -p ${TKGI_PASS} -k
+    - echo ${TKGI_PASS} | tkgi get-credentials ${TKGI_K8S_DEV_SMALL01}
+    - kubectl delete secret -n lnsw-dev ${APP_NAME}-dev-secret --ignore-not-found
+    - kubectl create secret generic -n lnsw-dev ${APP_NAME}-dev-secret --from-file=.env=.env
+
+
+

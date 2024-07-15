@@ -1,0 +1,3 @@
+sequelize-auto -h <host> -d <database> -u <user> -x [password] -p [port]  --dialect [dialect] -c [/path/to/config] -o [/path/to/models] -t tableName
+
+sequelize-auto -h 127.0.0.1 -d test -u root -p 3306 -o "/api/models"
