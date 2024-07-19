@@ -15,6 +15,20 @@ exports.insertProduct = async (data) => {
     return "Success insert";
 };
 
+exports.insertMerchant = async (data) => {
+    let query = `INSERT INTO marketplace.merchant
+      (nama)
+      values($1)`
+    const values = [data.nama]
+
+    const result = await db.query(query, {
+        bind: values,
+        type: db.QueryTypes.INSERT,
+    });
+
+    return "Success insert";
+};
+
 exports.updateProduct = async (
     nama_product,
     deskripsi,
@@ -138,7 +152,7 @@ exports.insertTransaksi = async (idCustomer, isGratisOngkir, isDiskon, diskonVal
         transaction,
     });
 
-    return "Success insert";
+    return "result";
 };
 
 exports.updateStock = async (
@@ -176,4 +190,30 @@ where p.id_merchant = id_merchant`
     }
     );
     return result;
+};
+
+exports.insertCustomer = async (data) => {
+    let query = `INSERT INTO marketplace.customer
+      (nama_customer, email, no_hp)
+      values($1, $2, $3)`
+    const values = [data.namaCustomer, data.email, data.noHp]
+
+    const result = await db.query(query, {
+        bind: values,
+        type: db.QueryTypes.INSERT,
+    });
+
+    return "Success insert";
+};
+
+exports.getIdMerchantFromProduct = async (id_product) => {
+    let query = `select id_merchant from marketplace.product where id_product = :id_product `
+    const result = await db.query(query, {
+        type: db.QueryTypes.SELECT,
+        replacements: {
+            id_product
+        }
+    }
+    );
+    return result[0].id_merchant;
 };

@@ -27,11 +27,11 @@ sequelize
   .authenticate()
   .then(() => {
     // eslint-disable-next-line no-console
-    console.log("Connection 1 has been established successfully.");
+    console.log("Connection has been established successfully.");
   })
   .catch(err => {
     // eslint-disable-next-line no-console
-    console.error("Unable to connect to the database 1:", err);
+    console.error("Unable to connect to the database:", err);
   });
 
 app.listen(3000, () => logger.info(`server started on port ${port} (${env})`));

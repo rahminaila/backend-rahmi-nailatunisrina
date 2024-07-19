@@ -13,6 +13,9 @@ router.route('/getToken')
 router.route('/cek')
   .get(verifyToken, controller.cek)
 
+router.route('/createMerchant')
+  .post(verifyToken, merchantController.createMerchant)
+
 router.route('/createProduct')
   .post(verifyToken, merchantController.createProduct)
 
@@ -30,5 +33,8 @@ router.route('/getListProduct')
 
 router.route('/buyProduct')
   .post(verifyToken, customerController.buyProduct)
+
+router.route('/createCustomer')
+  .post(verifyToken, customerController.createCustomer)
 
 module.exports = router;

@@ -47,7 +47,7 @@ exports.buyProduct = async (req, res) => {
             console.log(getHargaDanStock.stock, 'stok');
 
             if ((getHargaDanStock.stock - detil.jumlah) < 0) {
-                return res.status(200).json({ code: 200, status: "success", message: "Jumlah melebihi stock" })
+                return res.status(403).json({ code: 403, status: "failed", message: "Jumlah melebihi stock" })
             }
             console.log(getHargaDanStock.harga, 'harga');
             hargaDetil = getHargaDanStock.harga * detil.jumlah
@@ -77,8 +77,29 @@ exports.buyProduct = async (req, res) => {
         //insert ke tabel transaksi
         let insertTransaksi = await service.insertTransaksi(product.idCustomer, isGratisOngkir, isDiskon, diskonValue, hargaOngkir, totalHargaSebelumDiskon, totalSemua, transaction);
 
+        await transaction.commit()
 
         return res.status(200).json({ code: 200, status: "success", message: "Berhasil membeli produk"})
+    } catch (err) {
+        await transaction?.rollback()
+        console.log(err)
+        return res.status(500).json({
+            kode: 500,
+            keterangan: "Internal Server Error",
+            data: {
+                kode: '005',
+                keterangan: err.message
+            }
+        })
+    }
+};
+
+exports.createCustomer = async (req, res) => {
+    try {
+        const cust = req.body;
+        await service.insertCustomer(cust);
+
+        return res.status(200).json({ code: 200, status: "success", message: "Berhasil menambahkan customer", data: cust })
     } catch (err) {
         console.log(err)
         return res.status(500).json({
